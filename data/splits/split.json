@@ -1,0 +1,30 @@
+{
+  "train": [
+    "image_v2_13",
+    "image_v2_03",
+    "image_v2_06",
+    "image_v2_04",
+    "image_v2_20",
+    "image_v2_15",
+    "image_v2_16",
+    "image_v2_12",
+    "image_v2_10",
+    "image_v2_05",
+    "image_v2_18",
+    "image_v2_11",
+    "image_v2_17",
+    "image_v2_19"
+  ],
+  "val": [
+    "image_v2_14",
+    "image_v2_08",
+    "image_v2_09",
+    "image_v2_01"
+  ],
+  "test": [
+    "image_v2_21",
+    "image_v2_07",
+    "image_v2_02",
+    "image_v2_00"
+  ]
+}
