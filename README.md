@@ -3,7 +3,6 @@
 
 This project investigates the problem of particle segmentation in 2D micro-tomography slices of a material, a task complicated by the limited availability of annotated data and the large amount of unlabeled imagery. To address this challenge, we first implement a supervised method using a 2D U-Net trained solely on the labeled slices. We then extend this with a semi-supervised learning strategy based on the Mean Teacher framework, which incorporates unlabeled data through consistency regularization between a Student and a Teacher model. Experimental results show that the semi-supervised model outperforms the supervised-only case in terms of segmentation quality, achieving higher Dice and IoU scores in both patch-level and full-image evaluations.
 
-This repository is structured as follows:
 
 ### Installation
 
@@ -26,6 +25,7 @@ pip install opencv-python-headless
 
 ### Repository structure
 ├── main_freezelayers.ipynb     # Main notebook: preprocessing, supervised, SSL, eval, figures
+├── model_unet.py               # U-Net architecture (DoubleConv, Down/Up blocks, OutConv, InstanceNorm)
 ├── datasets.py                 # Labeled/Unlabeled datasets, ReplayCompose weak/strong pipeline
 ├── losses.py                   # BCEWithLogits + soft Dice combo
 ├── utils.py                    # Sliding-window inference, stitching, eval helpers
@@ -34,7 +34,6 @@ pip install opencv-python-headless
 ├── data/                       # Labeled and unlabeled images (+ split)
 ├── runs/                       # Per-experiment folders with metrics & patch tests
 └── README.md
-
 
 
 The main file is where the pipeline can be seen in action and main results are produced and plotted. 
@@ -74,13 +73,13 @@ Characteristics:
 | Simple, stable, widely validated |Receptive field depends on depth |
 
 
-**Loss and metrics**
+- **Loss and metrics**:
 Training is done with a BCE + Dice objective on logits, and report Dice/IoU on the thresholded probabilities. For micro-CT segmentation, masks are often imbalanced (small particles vs large background). Dice loss is excellent for overlap but unstable when predictions are near zero and BCE is stable but insensitive to region-level overlap. Therefore, combining them gives the best of both worlds. 
 
-**Optimization**
+- **Optimization**:
 We train the U-Net with AdamW (initial learning rate 1e-3, weight decay 1e-4). AdamW was chosen because its decoupled weight decay acts as true weight shrinkage (better generalization in small, noisy datasets), while retaining Adam’s fast, adaptive convergence. A ReduceLROnPlateau scheduler (mode=max) monitors validation Dice and halves the learning rate (factor=0.5) after 10 epochs without improvement (patience=10), with a minimum learning rate of 1e-6. The checkpoint with the highest validation Dice is selected and saved to initialize the semi-supervised (Mean Teacher) phase.
 
-**Normalization**
+- **Normalization**:
 In this case, we also utilize InstanceNorm instead of the usual BatchNorm, as Instance Normalization normalizes each image independently, making it robust to illumination differences, contrast variations, and domain shifts.
 
 ### Semi-Supervised Block
@@ -113,7 +112,7 @@ AdamW (lr=1e-3, weight_decay=1e-4), with the same ReduceLROnPlateau schedule on 
 ### Results (summary)
 We convert U-Net probabilities to a mask by thresholding the sigmoid outputs at 0.5. All reported Dice/IoU and visualizations use this fixed threshold. 
 
-**Patch-level (256×256)** 
+**Patch-level (256×256) results** 
 - Supervised U-Net: Mean Dice score = 0.7354, Mean IoU = 0.5945 
 - **SSL Mean Teacher:** **Mean Dice score = 0.7996, Mean IoU = 0.6769**
 
