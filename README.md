@@ -24,6 +24,7 @@ pip install opencv-python-headless
 ```
 
 ### Repository structure
+
 ├── main_freezelayers.ipynb     # Main notebook: preprocessing, supervised, SSL, eval, figures
 ├── model_unet.py               # U-Net architecture (DoubleConv, Down/Up blocks, OutConv, InstanceNorm)
 ├── datasets.py                 # Labeled/Unlabeled datasets, ReplayCompose weak/strong pipeline
