@@ -119,8 +119,8 @@ We convert U-Net probabilities to a mask by thresholding the sigmoid outputs at 
 
 
 ### References
-[1]: O. Ronneberger, P. Fischer, and T. Brox, “U-net: Convolutional networks for biomedical image segmentation,” in Medical Image Computing and Computer-Assisted Intervention (MICCAI). Springer, 2015, pp. 234–241, arXiv:1505.04597.
-[2]: Wang Jiangtao, Nur Intan Raihana Ruhaiyem, and Fu Panpan, “A comprehensive review of u-net and its variants: Advances and applications in medical image segmentation,” IET Image Processing, vol. 19, no. 1, pp.e70019, 2025.
-[3]: Antti Tarvainen and Harri Valpola, “Mean teachers are better role models: Weight-averaged consistency targets improve semi-supervised deep learning results,” 2018. 
-[4]: Qizhe Xie, Zihang Dai, Eduard Hovy, Minh-Thang Luong, and Quoc V. Le, “Unsupervised data augmentation for consistency training,” 2020.
-[5]: Geoff French, Timo Aila, Samuli Laine, Michal Mackiewicz, and Graham Finlayson, “Semi-supervised semantic segmentation needs strong, high-dimensional perturbations,” 2020.
+- [1]: O. Ronneberger, P. Fischer, and T. Brox, “U-net: Convolutional networks for biomedical image segmentation,” in Medical Image Computing and Computer-Assisted Intervention (MICCAI). Springer, 2015, pp. 234–241, arXiv:1505.04597.
+- [2]: Wang Jiangtao, Nur Intan Raihana Ruhaiyem, and Fu Panpan, “A comprehensive review of u-net and its variants: Advances and applications in medical image segmentation,” IET Image Processing, vol. 19, no. 1, pp.e70019, 2025.
+- [3]: Antti Tarvainen and Harri Valpola, “Mean teachers are better role models: Weight-averaged consistency targets improve semi-supervised deep learning results,” 2018. 
+- [4]: Qizhe Xie, Zihang Dai, Eduard Hovy, Minh-Thang Luong, and Quoc V. Le, “Unsupervised data augmentation for consistency training,” 2020.
+- [5]: Geoff French, Timo Aila, Samuli Laine, Michal Mackiewicz, and Graham Finlayson, “Semi-supervised semantic segmentation needs strong, high-dimensional perturbations,” 2020.
