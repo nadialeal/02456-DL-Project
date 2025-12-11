@@ -25,17 +25,16 @@ pip install opencv-python-headless
 
 ### Repository structure
 
-.
-|-- main_freezelayers.ipynb     # Main notebook: preprocessing, supervised, SSL, eval, figures
-|-- model_unet.py               # U-Net architecture (DoubleConv, Down/Up, OutConv, InstanceNorm)
-|-- datasets.py                 # Labeled/Unlabeled datasets, ReplayCompose weak/strong pipeline
-|-- losses.py                   # BCEWithLogits + soft Dice combo
-|-- utils.py                    # Sliding-window inference, stitching, eval helpers
-|-- utils_viz3.py               # Augmentation & prediction visualization utilities
-|-- checkpoints/                # Best supervised Dice + final teacher/student
-|-- data/                       # Labeled and unlabeled images (+ split)
-|-- runs/                       # Per-experiment folders with metrics & patch tests
-`-- README.md
+- main_freezelayers.ipynb - Main notebook: preprocessing, supervised, SSL, eval, figures
+- model_unet.py - U-Net architecture (DoubleConv, Down/Up, OutConv, InstanceNorm)
+- datasets.py - Labeled/Unlabeled datasets, ReplayCompose weak/strong pipeline
+- losses.py - BCEWithLogits + soft Dice combo
+- utils.py - Sliding-window inference, stitching, eval helpers
+- utils_viz3.py - Augmentation & prediction visualization utilities
+- checkpoints/ - Best supervised Dice + final teacher/student
+- data/ - Labeled and unlabeled images (+ split)
+- runs/ - Per-experiment folders with metrics & patch tests
+- README.md
 
 
 The main file is where the pipeline can be seen in action and main results are produced and plotted. 
